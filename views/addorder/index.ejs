@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>addorder</title>
+<style>
+.color-red{
+    color: #F00;
+}
+
+.container {
+    border: 1px solid #ccc;
+    }
+    input:invalid {
+  background-color: yellow;
+}
+</style>
+<script>
+ var uri = window.location.toString();
+if (uri.indexOf("?") > 0) {
+    var clean_uri = uri.substring(0, uri.indexOf("?"));
+    window.history.replaceState({}, document.title, clean_uri);
+}
+    function validate() {
+ // check if input is bigger than 3
+    var errorMsg=new Array(); 
+var sfvalue = document.forms["add"]["senderFirstName"].value;
+ var slvalue =  document.forms["add"]["senderLastName"].value;
+ var sAge =  document.forms["add"]["senderAge"].value;
+ var sContact =  document.forms["add"]["senderContact"].value;
+ var sCity =  document.forms["add"]["senderCity"].value;
+ var sState = document.forms["add"]["senderState"].selectedIndex;
+ var sAddress =  document.forms["add"]["senderAddress"].value;
+ var sZipCode =  document.forms["add"]["senderZipCode"].value;
+ var rfName = document.forms["add"]["recipientFirstName"].value;
+ var rlName =  document.forms["add"]["recipientLastName"].value;
+ var rAge =  document.forms["add"]["recipientAge"].value;
+ var rContact =  document.forms["add"]["recipientContact"].value;
+ var rCity =  document.forms["add"]["recipientCity"].value;
+ var rState =  document.forms["add"]["recipientState"].selectedIndex;
+ var rAddress =  document.forms["add"]["recipientAddress"].value;
+ var rZipCode =  document.forms["add"]["recipientZipCode"].value;
+ var orderDate =  document.forms["add"]["orderDate"].value;
+ var weight =  document.forms["add"]["weight"].value;
+ var cost =  document.forms["add"]["cost"].value;
+ var patt = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/
+ if (sfvalue.length < 3) {
+  errorMsg[0] = "Invalid Sender First Name";
+    
+ }
+ else{
+    var sfvalue = document.forms["add"]["senderFirstName"];
+    sfvalue.style.backgroundColor = "yellow";
+ }
+ if (slvalue.length < 3) {
+
+  errorMsg[1] = "Invalid Sender Last Name";
+   
+ }
+ else{
+    var slvalue =  document.forms["add"]["senderLastName"];
+    slvalue.style.backgroundColor = "yellow";
+ }
+ if (sAge < 18){
+    errorMsg[2] = "Age must be 18 or more";
+    
+ }
+ else{
+    var sAge =  document.forms["add"]["senderAge"];
+    sAge.style.backgroundColor = "yellow";
+ }
+ if (sContact.length < 10) {
+    errorMsg[3] = "Invalid mobile number";
+    
+ }
+ else{
+    var sContact =  document.forms["add"]["senderContact"];
+    sContact.style.backgroundColor = "yellow";
+ }
+ if (sCity == '') {
+    errorMsg[4] = "Invalid Sender City";
+ }
+ else{
+    var sCity =  document.forms["add"]["senderCity"];
+    sCity.style.backgroundColor = "yellow";
+ }
+ if (sState == 0) {
+    errorMsg[5] = "Invalid Sender State";
+   
+ }
+ else{
+    var sState =  document.forms["add"]["senderState"];
+    sState.style.backgroundColor = "yellow";
+ }
+
+ if (sZipCode.length < 6) {
+    errorMsg[7] = "Invalid Zip Code";
+    
+ }
+ else{
+    var sZipCode =  document.forms["add"]["senderZipCode"];
+    sZipCode.style.backgroundColor = "yellow";
+ }
+ if (rfName.length < 3) {
+    errorMsg[8] = "Invalid Recipient First Name";
+    
+ }
+ else{
+    var rfName = document.forms["add"]["recipientFirstName"];
+    rfName.style.backgroundColor = "yellow";
+ }
+ if (rlName.length < 3) {
+    errorMsg[9] = "Invalid Recipient Last Name";
+    
+ }
+ else{
+    var rlName =  document.forms["add"]["recipientLastName"];
+    rlName.style.backgroundColor = "yellow";
+ }
+ if (rAge < 18){
+    errorMsg[10] = "Age must be 18 or more";
+    
+ }
+ else{
+    var rAge =  document.forms["add"]["recipientAge"];
+    rAge.style.backgroundColor = "yellow";
+ }
+ if (rContact.length < 10) {
+    errorMsg[11] = "Invalid mobile number";
+    
+ }
+ else{
+    var rContact =  document.forms["add"]["recipientContact"];
+    rContact.style.backgroundColor = "yellow";
+ }  
+ if (rCity == '') {
+    errorMsg[12] = "Invalid Recipient City";
+    
+ }
+ else{
+    var rCity =  document.forms["add"]["recipientCity"];
+    rCity.style.backgroundColor = "yellow";
+ }
+ if (rState == 0) {
+    errorMsg[13] = "Invalid Recipient State";
+    
+ }
+ else{
+    var rState =  document.forms["add"]["recipientState"];
+    rState.style.backgroundColor = "yellow";
+ }
+
+ if (rZipCode.length < 6) {
+    errorMsg[15] = "Invalid Zip Code";
+    
+ }
+ else{
+    var rZipCode =  document.forms["add"]["recipientZipCode"];
+    rZipCode.style.backgroundColor = "yellow";
+ }
+ if (!(patt.test(orderDate))) {
+    errorMsg[16] = "Order date is required";   
+ }
+ else{
+    var orderDate =  document.forms["add"]["orderDate"];
+    orderDate.style.backgroundColor = "yellow";
+ }
+ if (weight <= 0) {
+    errorMsg[17] = "Invalid weight";
+    
+ }
+ else{
+    var weight =  document.forms["add"]["weight"];
+    weight.style.backgroundColor = "yellow";
+ }
+ if (cost <= 0 || cost.length > 5) {
+    errorMsg[18] = "Invalid cost";
+    
+ }
+ else{
+    var cost =  document.forms["add"]["cost"];
+    cost.style.backgroundColor = "yellow";
+ }
+ if(errorMsg != ''){
+   document.getElementById("error").innerHTML="";  
+    for(var i=0;i<=errorMsg.length-1;i++){
+        if(typeof errorMsg[i] !== 'undefined'){      
+    document.getElementById("error").innerHTML+= errorMsg[i]+"<br/>"
+        }
+    }   
+    return false;
+}
+    return true;
+
+    }
+    </script>
+</head>
+<body>
+        <h1><center><b>Add an order</b></center></h1>
+        <hr>
+        <div id="error"></div>
+    <br/>
+
+<form name="add" method= "post" onsubmit="return validate()" >
+        <div class="container">
+        <h1><center> Sender Details </center></h1>
+        <div align="left">
+        <label for="First Name"><B>First Name  </B></label>
+        <input name="senderFirstName" id = "senderFirstName" type="text" placeholder="FirstName" maxlength = "30"/>
+            </div>
+            <div align="right">
+        <label for="City">City  </label>
+        <input name="senderCity" id = "senderCity" type="text" placeholder="City/Town" maxlength = "30"/>
+    </div>
+    <div align="left">
+        <label for="Last Name">Last Name  </label>
+        <input name="senderLastName" id = "senderLastName" type="text" placeholder="LastName" maxlength = "30"/>
+    </div>
+    <div align="right">
+        <label for="State">State </label>
+        <select name="senderState" id = "senderState">
+                <option value="select state">--select state--</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option> 
+                <option value="Bihar">Bihar</option>  
+                <option value="Chhattisgarh">Chhattisgarh</option>  
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>  
+                <option value="Himachal Pradesh">Himachal Pradesh</option>  
+                <option value="Jammu & Kashmir">Jammu & Kashmir</option>  
+                <option value="Jharkhand">Jharkhand</option>  
+                <option value="Karnataka">Karnataka</option>  
+                <option value="Kerala">Kerala</option> 
+                <option value="Madhya Pradesh">Madhya Pradesh</option> 
+                <option value="Maharashtra">Maharashtra</option> 
+                <option value="Manipur">Manipur</option> 
+                <option value="Meghalaya">Meghalaya</option> 
+                <option value="Mizoram">Mizoram</option> 
+                <option value="Nagaland">Nagaland</option> 
+                <option value="Odisha">Odisha</option> 
+                <option value="Punjab">Punjab</option> 
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option> 
+                <option value="Tamil Nadu">Tamil Nadu</option> 
+                <option value="Telangana">Telangana</option> 
+                <option value="Tripura">Tripura</option> 
+                <option value="Uttarakhand">Uttarakhand</option> 
+                <option value="Uttar Pradesh">Uttar Pradesh</option> 
+                <option value="West Bengal">West Bengal</option> 
+              </select>
+    </div>
+    <div align="left">
+        <label for="Age">Age  </label>
+        <input name="senderAge" id = "senderAge" type="text" placeholder="Age" maxlength = "30"/>
+    </div>
+    <div align="right">
+        <label for="Mobile">Mobile No. </label>
+        <input name="senderContact" id = "senderContact" type="text" placeholder="Mobile" maxlength = "30"/>
+    </div>
+    <div align="left">
+        <label for="Address">Address  </label>
+        <input name="senderAddress" id = "senderAddress" type="text" placeholder="address" maxlength = "30"/>
+    </div>
+    <div align="right">
+        <label for="Zip Code">Zip Code </label>
+        <input name="senderZipCode" id = "senderZipCode" type="text" placeholder="Zip Code" maxlength = "30"/>
+    </div>
+    </div>
+    <br/>
+
+    <div class="container">
+            <h1><center> Receiver Details </center></h1>
+            <div align="left">
+            <label for="First Name"><B>First Name  </B></label>
+            <input name="recipientFirstName" id = "recipientFirstName" type="text" placeholder="FirstName" maxlength = "30"/>
+                </div>
+                <div align="right">
+            <label for="City">City  </label>
+            <input name="recipientCity" id = "recipientCity" type="text" placeholder="City/Town" maxlength = "30"/>
+        </div>
+        <div align="left">
+            <label for="Last Name">Last Name  </label>
+            <input name="recipientLastName" id = "recipientLastName" type="text" placeholder="LastName" maxlength = "30"/>
+        </div>
+        <div align="right">
+            <label for="State">State  </label>
+            <select name="recipientState" id = "recipientState">
+                    <option value="select state">--select state--</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option> 
+                    <option value="Bihar">Bihar</option>  
+                    <option value="Chhattisgarh">Chhattisgarh</option>  
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>  
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>  
+                    <option value="Jammu & Kashmir">Jammu & Kashmir</option>  
+                    <option value="Jharkhand">Jharkhand</option>  
+                    <option value="Karnataka">Karnataka</option>  
+                    <option value="Kerala">Kerala</option> 
+                    <option value="Madhya Pradesh">Madhya Pradesh</option> 
+                    <option value="Maharashtra">Maharashtra</option> 
+                    <option value="Manipur">Manipur</option> 
+                    <option value="Meghalaya">Meghalaya</option> 
+                    <option value="Mizoram">Mizoram</option> 
+                    <option value="Nagaland">Nagaland</option> 
+                    <option value="Odisha">Odisha</option> 
+                    <option value="Punjab">Punjab</option> 
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option> 
+                    <option value="Tamil Nadu">Tamil Nadu</option> 
+                    <option value="Telangana">Telangana</option> 
+                    <option value="Tripura">Tripura</option> 
+                    <option value="Uttarakhand">Uttarakhand</option> 
+                    <option value="Uttar Pradesh">Uttar Pradesh</option> 
+                    <option value="West Bengal">West Bengal</option> 
+                  </select>
+        </div>
+        <div align="left">
+            <label for="Age">Age  </label>
+            <input name="recipientAge" id = "recipientAge" type="text" placeholder="Age" maxlength = "30"/>
+        </div>
+        <div align="right">
+            <label for="Mobile">Mobile No. </label>
+            <input name="recipientContact" id = "recipientContact" type="text" placeholder="Mobile" maxlength = "30"/>
+        </div>
+        <div align="left">
+            <label for="Address">Address  </label>
+            <input name="recipientAddress" id = "recipientAddress" type="text" placeholder="address" maxlength = "30"/>
+        </div>
+        <div align="right">
+            <label for="Zip Code">Zip Code </label>
+            <input name="recipientZipCode" id = "recipientZipCode" type="text" placeholder="Zip Code" maxlength = "30"/>
+        </div>
+        <br/>
+    </div>
+
+    <div class="container">
+            <div align="center">
+                <label for="Order Date">Order Date: </label>
+                <input type="text" name="orderDate" id = "orderDate"  maxlength = "30"/>
+                        </div>
+                        <br/>
+            <div align="center">
+            <label for="Weight">Weight: </label>
+            <input type="text" name="weight" id = "weight"  placeholder="weight in kg" maxlength = "30"/>
+                </div>
+                  <br/>
+                <div align="center">
+            <label for="cost">Cost: </label>
+            <input type="text" name="cost" id = "cost"/>
+                        </div>
+                        <br/>
+        </div>
+        <div align="center">
+            <button type="submit" id = "placeOrder">Place Order</button>
+        </div>
+        </div>
+        </form>
+        <br/>
+        <div align="center">
+        <a href="./orders">
+        <button type="submit">cancel</button> 
+    </a>
+</div>
+
+</body>
+</html>

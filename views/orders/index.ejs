@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order List</title>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+</style>
+<script>
+ 
+    </script>
+</head>
+<body>
+<h1><P>Welcome</P></h1>
+<br>
+<hr>
+<br>
+<form method="get" action="/addorder">
+    <div>
+    <button type="submit" id="addOrder"> Add Order </button>
+    <button type="submit"><a href = "/logout">Logout</a></button>
+    </div> 
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<form id = "orderform">
+<% if(typeof result !== 'undefined'){%>
+<table id="orderTable" border="1">
+    <tr>
+        <th>Order Id</th>
+        <th>Order Date</th>
+        <th>Sender State</th>
+        <th>Recipient State</th>
+        <th>Order Status</th>
+        <th>Weight (in Kgs)</th>
+        <th>Cost(@ Rs. 10/Kg)</th>
+        <th>Update Order</th>
+    </tr>
+    <tr>
+            <td id="orderId1"><%=result.order1Key.OrderNumber%></td>
+            <td id="orderDate1"><%=result.order1Key.OrderDate%></td>
+            <td id="senderState1"><%=result.order1Key.Sstate%></td>
+            <td id="recpientState1"><%=result.order1Key.Rstate%></td>
+            <td id="orderStatus1"><%=result.order1Key.Status%></td>
+            <td id="weight1"><%=result.order1Key.Weight%></td>
+            <td id="cost1"><%=result.order1Key.Cost%></td>
+            <td>
+                    <button type="submit" id="edit1"><a href = "./updateorderstatus?OrderNumber=<%=result.order1Key.OrderNumber%>"> Update Order Status  </a></button>
+               
+            </td>
+    </tr>
+    <tr>
+        <td id="orderId2"><%=result.order2Key.OrderNumber%></td>
+        <td id="orderDate2"><%=result.order2Key.OrderDate%></td>
+        <td id="senderState2"><%=result.order2Key.Sstate%></td>
+        <td id="recpientState2"><%=result.order2Key.Rstate%></td>
+        <td id="orderStatus2"><%=result.order2Key.Status%></td>
+        <td id="weight2"><%=result.order2Key.Weight%></td>
+        <td id="cost2"><%=result.order2Key.Cost%></td>
+            <td>
+                    
+                    <button type="submit" id="edit2"><a href = "./updateorderstatus?OrderNumber=<%=result.order2Key.OrderNumber%>"> Update Order Status </a></button>
+            </td>
+    </tr>
+    <tr>
+        <td id="orderId3"><%=result.order3Key.OrderNumber%></td>
+        <td id="orderDate3"><%=result.order3Key.OrderDate%></td>
+        <td id="senderState3"><%=result.order3Key.Sstate%></td>
+        <td id="recpientState3"><%=result.order3Key.Rstate%></td>
+        <td id="orderStatus3"><%=result.order3Key.Status%></td>
+        <td id="weight3"><%=result.order3Key.Weight%></td>
+        <td id="cost3"><%=result.order3Key.Cost%></td>
+            <td>
+                   
+                    <button type="submit" id="edit3"> <a href = "./updateorderstatus?OrderNumber=<%=result.order3Key.OrderNumber%>"> Update Order Status </a></button>
+
+            </td>
+    </tr>
+
+    <tr>
+        <td id="orderId4"><%=result.order4Key.OrderNumber%></td>
+        <td id="orderDate4"><%=result.order4Key.OrderDate%></td>
+        <td id="senderState4"><%=result.order4Key.Sstate%></td>
+        <td id="recpientState4"><%=result.order4Key.Rstate%></td>
+        <td id="orderStatus4"><%=result.order4Key.Status%></td>
+        <td id="weight4"><%=result.order4Key.Weight%></td>
+        <td id="cost4"><%=result.order4Key.Cost%></td>
+            <td>
+                    
+                    <button type="submit" id="edit4"><a href = "./updateorderstatus?OrderNumber=<%=result.order4Key.OrderNumber%>"> Update Order Status  </a></button>
+               
+            </td>
+    </tr>
+    <% if(typeof result.addorderkey !== 'undefined'){ %>
+        <tr>
+                <td id="orderId5"><%=result.addorderkey.OrderNumber%></td>
+                <td id="orderDate5"><%=result.addorderkey.OrderDate%></td>
+                <td id="senderState5"><%=result.addorderkey.senderState%></td>
+                <td id="recpientState5"><%=result.addorderkey.recipientState%></td>
+                <td id="orderStatus5"><%=result.addorderkey.Status%></td>
+                <td id="weight5"><%=result.addorderkey.weight%></td>
+                <td id="cost5"><%=result.addorderkey.cost%></td>
+                    <td>
+                            
+                            <button type="submit" id="edit5"><a href = "./updateorderstatus?OrderNumber=<%=result.addorderkey.OrderNumber%>"> Update Order Status </a></button>
+                        </a>
+                    </td>
+            </tr>
+        <% } %>
+    <tr>
+</table>
+<% } %>
+<% if(typeof result === 'undefined'){ %>
+    <div id="noorders" align="center">No orders found</div>
+    <% } %>
+</form>
+</body>
+</html>

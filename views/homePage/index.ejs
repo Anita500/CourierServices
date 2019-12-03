@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.container {
+    border: 1px solid #ccc;
+    }
+	.color-red{
+    color: #F00;
+}
+
+		</style>
+	<title>Home</title>
+	<script>
+		function validateForm() {
+			var message;
+  message = document.getElementById("error");
+  message.innerHTML = "";
+		  var id = document.forms["frm"]["orderId"].value;
+		  let number = parseInt(id, 10);
+		  if (id == null || id == "") {
+			message.innerHTML = "Order Number should be Mandatory";
+			return false;
+		  }
+		  else if(isNaN(number)) {
+			message.innerHTML = "Order Number should be numeric";
+			return false;
+			}
+			else if (id != '487655' && id != '831655' && id != '655690' && id != '192874'){
+			message.innerHTML = "Invalid Order Number";
+			return false;
+			}
+			return true;
+		}
+	  </script>
+</head>
+<body>                    
+							<div align="center">
+							<h1>ABC Courier Services</h1>
+								</div>
+								<div align = "right">
+									<a href="./login">Login</a>
+							</div>
+							<hr>
+							<br/>
+							<div id="error"></div>
+							<br/>
+							<form  role="form" method="post" name="frm" onsubmit="return validateForm()">
+							<div class="container">
+								<div align = "center">
+									<h2>Track Order</h2>
+									</div>
+									<hr>
+									<br/>
+									<br/>		
+								<div align= "center">
+		                        <label for="orderId">Enter Order Number</label>
+		                            <input type="text"  id="orderId" placeholder="Enter Order Number" name="orderId" maxlength = "30"/>
+		                    </div>
+							<br/>
+							<br/>
+		                    <div align= "center">
+									<button type="submit" id = "track">Track Order</button>
+							</div>
+						</div>
+							
+						</form>
+
+</body>
+</html>

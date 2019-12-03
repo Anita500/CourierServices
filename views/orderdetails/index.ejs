@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Details</title>
+<style>
+
+
+.container {
+    border: 1px solid #ccc;
+    }
+</style>
+</head>
+<body>
+<h1>Order Details</h1>
+<div align="right">
+    <a href="/homepage">home</a>
+    </div>
+<hr>
+<form name="order">
+    <label for="Order Number"><B>Order Number</B></label>
+    <label for="Order Number"><B><%=result.OrderNumber%></B></label>
+</form>
+
+<form name="sender">
+        <div class="container">
+    <h1><center> Sender Details </center></h1>
+    <div align="left">
+    <label for="First Name"><B>First Name  </B></label>
+    <label for="First Name"><%=result.Sfname%></label>
+    </div>
+    <div align="right">
+    <label for="Last Name"><B>Last Name  </B></label>
+    <label for="Last Name"><%=result.Slname%></label><br/>
+    </div>
+    <div align="left">
+    <label for="Address"><B>Address  </B></label>
+    <label for="Address"><%=result.Saddress%></label>
+</div>
+<div align="right">
+    <label for="City"><B>City  </B></label>
+    <label for="City"><%=result.Scity%></label><br/>
+</div>
+<div align="left">
+    <label for="State"><B>State  </B></label>
+    <label for="State"><%=result.Sstate%></label>
+</div>
+<div align="right">
+    <label for="Zip"><B>Zip  </B></label>
+    <label for="Zip"><%=result.Szip%></label><br/>
+</div>
+<div align="left">
+    <label for="Age"><B>Age  </B></label>
+    <label for="Age"><%=result.Sage%></label>
+</div>
+<div align="right">
+    <label for="Mobile Number"><B>Mobile Number  </B></label>
+    <label for="Mobile Number"><%=result.SMobile%></label><br/>
+</div>
+</div>
+
+<div class="container">
+        <h1><center> Recipients Details </center></h1>
+        <div align="left">
+        <label for="First Name"><B>First Name  </B></label>
+        <label for="First Name"><%=result.Rfname%></label>
+            </div>
+            <div align="right">
+        <label for="Last Name"><B>Last Name  </B></label>
+        <label for="Last Name"><%=result.Rlname%></label>
+    </div>
+    <div align="left">
+        <label for="Address"><B>Address  </B></label>
+        <label for="Address"><%=result.Raddress%></label>
+    </div>
+    <div align="right">
+        <label for="City"><B>City  </B></label>
+        <label for="City"><%=result.Rcity%></label>
+    </div>
+    <div align="left">
+        <label for="State"><B>State  </B></label>
+        <label for="State"><%=result.Rstate%></label>
+    </div>
+    <div align="right">
+        <label for="Zip"><B>Zip  </B></label>
+        <label for="Zip"><%=result.Rzip%></label>
+    </div>
+    <div align="left">
+        <label for="Age"><B>Age  </B></label>
+        <label for="Age"><%=result.Rage%></label>
+    </div>
+    <div align="right">
+        <label for="Mobile Number"><B>Mobile Number  </B></label>
+        <label for="Mobile Number"><%=result.RMobile%></label>
+    </div>
+</div>
+
+    <div class="container">
+            <div align="left">
+            <label for="Weight"><B>Weight  </B></label>
+            <label for="Weight"><%=result.Weight%></label>
+                </div>
+                <div align="right">
+            <label for="Cost"><B>Cost  </B></label>
+            <label for="Cost"><%=result.Cost%></label><br/>
+        </div>
+        <div align="left">
+            <label for="Status"><B>Status  </B></label>
+            <label for="Status"><%=result.Status%></label>
+        </div>
+        <div align="right">
+            <label for="Order Date"><B>Order Date  </B></label>
+            <label for="Order Date"><%=result.OrderDate%></label><br/>
+        </div>
+        <div align="left">
+            <label for="Delivered On"><B>Delivered On  </B></label>
+            <label for="Delivered On"><%=result.DeliveredOn%></label>
+        </div>
+        </div>
+        </form>
+
+</body>
+</html>

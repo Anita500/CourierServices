@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>updateorderstatus</title>
+<style>
+
+		.container {
+    border: 1px solid #ccc;
+    }
+</style>
+<script>
+       var uri = window.location.toString();
+if (uri.indexOf("?") > 0) {
+    var clean_uri = uri.substring(0, uri.indexOf("?"));
+    window.history.replaceState({}, document.title, clean_uri);
+}
+/*function checktxtbox(){
+    if(document.updateOrder.statusSelect.value != '' && document.updateOrder.deliveryDate.value != ''){
+        document.updateOrder.savechange.disabled=false;
+    }
+    else{
+        document.urfrm.savechange.disabled=true;
+    }
+}*/
+    </script>
+</head>
+<body>
+<div align="center">
+<p><b>Order Details</b>
+</div>
+<hr>
+<br>
+<br>
+<form name="updateOrder" method = "POST" action="/updateorderstatus?OrderNumber=<%=result.OrderNumber%>">
+    <div class="container">
+        <div>
+    <label for="Order Number"><B>Order Number</B></label>
+    <label for="Order Number"><B><%=result.OrderNumber%></B></label><br>
+    </div>
+    <br>
+    <div
+    <label for="Status"><B>Status</B></label>
+    <select id = "statusSelect" name="statusSelect">
+        <option value="Delivered">Delivered</option>
+        <option value="Cancel">Cancelled</option>
+        <option value="Open">Open</option>
+      </select>
+    </div>
+    <div align="right">
+            <label for="DeliveredDate"><B>Delivered Date</B></label>
+            <input type="text" id = "deliveryDate" name="DeliveredDate" placeholder="mm-dd-yyyy"/>
+        </div>
+        </div>
+        <div>
+        <button type="submit" id="savechange">Save</button>
+        <a href="./orders">
+            <input type="button" value="Cancel"/>
+    </a>
+        </div>
+</form>
+</body>
+</html>
